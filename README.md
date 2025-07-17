@@ -27,7 +27,7 @@ example, using
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    nixup.url = "/home/twey/dev/nixup";
+    nixup.url = "github:Twey/nixup";
   };
 
   outputs = inputs:
