@@ -1,11 +1,12 @@
-# nixup
+# `nixup`
 
 `nixup` is a tool to provide [rustup](https://rustup.rs/)-style
 command wrappers for Rust toolchains, but provided by Nix.
 
-Unlike rustup, it supports declaratively specifying multiple
-toolchains, which can be referred to by their name, prefixed by a plus
-sign as the first argument to the command.
+Like rustup, it supports switching toolchains in a lightweight way by
+passing `+name` as the first argument to the command.  Unlike rustup,
+it supports declaratively specifying multiple toolchains with names of
+your choice.
 
 For example, `cargo +nightly build` will execute the command `cargo
 build` with the `nightly` toolchain in the path.
