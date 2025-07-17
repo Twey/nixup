@@ -11,7 +11,13 @@ then
     shift
 fi
 
-toolchain=${toolchains[$toolchain_name]}
+toolchain=${toolchains[$toolchain_name]-}
+
+if [ -z "$toolchain" ]
+then
+    >&2 echo "nixup: unknown toolchain \`${toolchain_name}\`"
+    exit 1
+fi
 
 PATH="$toolchain/bin:$PATH" \
     "${toolchains[$toolchain_name]}/bin/$(basename $0)" \
