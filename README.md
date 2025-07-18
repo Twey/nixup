@@ -1,19 +1,20 @@
 # `nixup`
 
 `nixup` is a tool to provide [rustup](https://rustup.rs/)-style
-command wrappers for Rust toolchains, but provided by Nix.
+command wrappers for Rust toolchains, but backed by Nix.
 
 Like rustup, it supports switching toolchains in a lightweight way by
 passing `+name` as the first argument to the command.  Unlike rustup,
 it supports declaratively specifying multiple toolchains with names of
-your choice.
+your choice.  By choosing your names carefully, you can be compatible
+with scripts that expect rustup to be present.
 
 For example, `cargo +nightly build` will execute the command `cargo
-build` with the `nightly` toolchain in the path.
-
-The special toolchain name `default` is used by default if no
-toolchain name is provided on the command line.  If no `default` is
-available and no toolchain name is provided, `nixup` will fail.
+build` with the `nightly` toolchain in the path.  The special
+toolchain name `default` is used by default if no toolchain name is
+provided on the command line.  If no `default` is available and no
+toolchain name is provided, or an unknown toolchain name is provided,
+`nixup` will fail.
 
 ## Usage
 
@@ -52,3 +53,10 @@ cargo 1.88.0 (873a06493 2025-05-10)
 $ ./result/bin/cargo +nightly --version
 cargo 1.90.0-nightly (6833aa715 2025-07-13)
 ```
+
+## `rust-toolchain.toml`
+
+For more complicated configurations, toolchains can be specified in a
+[rustup override
+file](https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file)
+and imported using `rust-bin.fromRustupToolchainFile`.
