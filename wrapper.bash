@@ -3,7 +3,7 @@
 declare -A toolchains
 @toolchains@
 
-toolchain_name=default
+toolchain_name="${RUST_TOOLCHAIN-default}"
 
 if [[ "$1" == +* ]]
 then

@@ -29,4 +29,5 @@ in stdenv.mkDerivation {
     description = "rustup-compatible Rust toolchain wrappers using Nix";
   };
   buildPhase = ''cp -r . $out'';
+  passthru.toolchains = toolchains;
 }
